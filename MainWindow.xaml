@@ -1,0 +1,42 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PlusPlayer"
+        xmlns:Controls="clr-namespace:PlusPlayer.Controls" x:Class="PlusPlayer.MainWindow"
+        mc:Ignorable="d"
+      Title="PlusPlayer" Background="Transparent" AllowsTransparency="True" WindowStyle="None" d:DesignWidth="320" d:DesignHeight="50" PreviewMouseDown="Window_PreviewMouseDown"  FocusVisualStyle="{x:Null}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="320"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+    
+    
+    <StackPanel x:Name="MenuPanel" Orientation="Vertical" Width="320">
+
+            <Ellipse Fill="#979BA0" Height="48" Opacity="0.6" VerticalAlignment="Top" Width="48" HorizontalAlignment="Right" Margin="1" ToolTip="Hold ctrl to drag window."/>
+
+            <Button x:Name="PlusPlayer_But" Height="50" Padding="0" Margin="0,-50,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" BorderThickness="0"  Click="PlusPlayer_But_Click" Style="{StaticResource NoButtonHoverFocus}" FocusVisualStyle="{x:Null}">
+
+            <Image x:Name="PlusIcon" Source="/Icons/Add.png"></Image>
+
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="SettingsMenu" Header="Settings" Click="SettingsMenu_Click" FontFamily="/PlusPlayer;component/Fonts/#Amble"/>
+                  <!--  <MenuItem x:Name="Help" Header="Help" Click="Help_Click" FontFamily="/PlusPlayer;component/Fonts/#Amble"/>
+                    <MenuItem x:Name="About" Header="About" Click="About_Click" FontFamily="/PlusPlayer;component/Fonts/#Amble"/> -->
+                    <Separator />
+                    <MenuItem x:Name="Quit" Header="Quit" Click="Quit_Click" FontFamily="/PlusPlayer;component/Fonts/#Amble"/>
+                </ContextMenu>
+            </Button.ContextMenu>
+        </Button>
+    </StackPanel>
+
+    <StackPanel x:Name="MainPanel" Orientation="Horizontal" Grid.Column="1">
+
+    </StackPanel>
+    </Grid>
+</Window>

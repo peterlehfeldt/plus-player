@@ -1,0 +1,130 @@
+﻿<UserControl x:Class="PlusPlayer.Controls.Player"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PlusPlayer.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="205" d:DesignWidth="320" FocusVisualStyle="{x:Null}">
+
+    <Grid Width="320" Height="205">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="17"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="18"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
+
+        <Grid></Grid>
+
+        <Grid x:Name="PlayerInformation_Grid" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="125"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="53"/>
+                <RowDefinition Height="32"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="1" Grid.RowSpan="4">
+                <Rectangle x:Name="AlternateBackground" Margin="0,0,0,0"/>
+                <Label x:Name="AlbumAlternate" Content="X" Margin="0,-5,0,0" Padding="0" VerticalContentAlignment="Center" HorizontalAlignment="Center" FontFamily="/PlusPlayer;component/Fonts/#Amble" FontSize="120" FontWeight="Bold"/>
+                <Image x:Name="AlbumArt"  Margin="0,0,0,0"/>
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.Column="1" Margin="5">
+                <Image Source="/Icons/VolumeBack.png" Height="35"/>
+                <Canvas x:Name="Slider_CV">
+                    <Image x:Name="Slider" Source="/Icons/VolumeSlider.png" Height="43" Width="11" Canvas.Left="141" MouseLeftButtonDown="Slider_MouseLeftButtonDown" MouseMove="Slider_MouseMove" MouseLeftButtonUp="Slider_MouseLeftButtonUp"/>
+                </Canvas>
+            </Grid>
+
+            <Label x:Name="TrackData" Grid.Row="3" Grid.Column="1" Padding="5,0" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontFamily="/PlusPlayer;component/Fonts/#Amble"/>
+            <Label x:Name="Album" Grid.Row="4" Grid.Column="1" Padding="5,0" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontFamily="/PlusPlayer;component/Fonts/#Amble"/>
+            <Label x:Name="SongTitle" Grid.Row="5" Grid.ColumnSpan="2" Padding="5,0" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontFamily="/PlusPlayer;component/Fonts/#Amble"/>
+
+            <Grid x:Name="PlayStyleBUttons_Grid"  Grid.Column="1" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="ContinuousPlay_But" Margin="2.5" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0" Style="{StaticResource NoButtonHoverFocus}" FocusVisualStyle="{x:Null}" Click="RepeatSingle_But_Click">
+                    <Image Source="/Icons/ContinuousPlay.png" Height="30"/>
+                </Button>
+
+                <Button x:Name="FolderPlay_But" Margin="2.5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0" Style="{StaticResource NoButtonHoverFocus}" FocusVisualStyle="{x:Null}" Click="RepeatSingle_But_Click">
+                    <Image Source="/Icons/FolderPlay.png" Height="30"/>
+                </Button>
+
+                <Button x:Name="RepeatSingle_But" Margin="2.5"  Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0" Style="{StaticResource NoButtonHoverFocus}" FocusVisualStyle="{x:Null}" Click="RepeatSingle_But_Click">
+                    <Image Source="/Icons/RepeatSingle.png" Height="30"/>
+                </Button>
+
+                <Button x:Name="RepeatAll_But" Margin="2.5" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0" Style="{StaticResource NoButtonHoverFocus}" FocusVisualStyle="{x:Null}" Click="RepeatAll_But_Click">
+                    <Image Source="/Icons/RepeatPlaylist.png" Height="30"/>
+                </Button>
+
+                <Button x:Name="Shuffle_But" Margin="2.5" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0" Style="{StaticResource NoButtonHoverFocus}" FocusVisualStyle="{x:Null}" Click="Shuffle_But_Click">
+                    <Image Source="/Icons/Shuffle.png" Height="30"/>
+                </Button>
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="ProgressBar_Grid" Grid.Row="1" Grid.Column="1" Margin="5">
+            <Rectangle x:Name="ProgressBarBack" HorizontalAlignment="Stretch" Margin="-2.5" Stroke="DarkBlue" Fill="Black" Opacity="0.2"/>
+            <Rectangle x:Name="ProgressBar" HorizontalAlignment="Left" Width="0" Fill="DodgerBlue"/>
+            <Rectangle x:Name="ProgressBarSlider" Fill="Transparent" MouseLeftButtonDown="ProgressBarSlider_MouseLeftButtonDown" MouseMove="ProgressBarSlider_MouseMove" MouseLeftButtonUp="ProgressBarSlider_MouseLeftButtonUp"/>
+        </Grid>
+
+        <Grid x:Name="Controls_Grid" Grid.Row="2" Grid.Column="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="AlbumBack_But"  Grid.Column="0" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0" Style="{StaticResource NoButtonHoverFocus}" FocusVisualStyle="{x:Null}" Click="AlbumBack_But_Click">
+                <Image Source="/Icons/AlbumBack.png" Height="30"/>
+            </Button>
+
+            <Button x:Name="TrackBack_But" Margin="0,0,0,0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0" Style="{StaticResource NoButtonHoverFocus}" FocusVisualStyle="{x:Null}" Click="TrackBack_But_Click">
+                <Image Source="/Icons/TrackBack.png" Height="30"/>
+            </Button>
+
+            <Button x:Name="PlayPause_But" Margin="0,0,0,0" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0" Style="{StaticResource NoButtonHoverFocus}" FocusVisualStyle="{x:Null}" Click="PlayPause_But_Click">
+                <Image Source="/Icons/PlayPause.png" Height="30"/>
+            </Button>
+
+            <Button x:Name="Stop_But" Margin="0,0,0,0" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0" Style="{StaticResource NoButtonHoverFocus}" FocusVisualStyle="{x:Null}" Click="Stop_But_Click">
+                <Image Source="/Icons/Stop.png" Height="30"/>
+            </Button>
+
+            <Button x:Name="TrackForward_But" Margin="0,0,0,0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0" Style="{StaticResource NoButtonHoverFocus}" FocusVisualStyle="{x:Null}" Click="TrackForward_But_Click">
+                <Image Source="/Icons/TrackForward.png" Height="30"/>
+            </Button>
+
+            <Button x:Name="AlbumForward_But" Margin="0,0,0,0" Grid.Column="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0" Style="{StaticResource NoButtonHoverFocus}" FocusVisualStyle="{x:Null}" Click="AlbumForward_But_Click">
+                <Image Source="/Icons/AlbumForward.png" Height="30"/>
+            </Button>
+
+
+        </Grid>
+    </Grid>
+</UserControl>
